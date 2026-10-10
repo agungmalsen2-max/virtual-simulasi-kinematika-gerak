@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Lab Kinematika</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">⚛</div>
+    <div><h1>Virtual Lab Kinematika</h1><p>Eksperimen Gerak dalam Fisika</p></div>
+  </div>
+  <div class="status"><span></span> Siap melakukan eksperimen</div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">LABORATORIUM VIRTUAL</span>
+      <h2>Pelajari Gerak melalui <em>Eksperimen Interaktif</em></h2>
+      <p>Atur variabel, amati gerak secara real-time, kumpulkan data, dan analisis hasil eksperimen secara langsung.</p>
+    </div>
+  </div>
+
+  <div class="experiment-grid">
+    <button class="experiment-card gjb" data-page="gjb">
+      <div class="card-icon">↓</div>
+      <div class="card-label">EKSPERIMEN 01</div>
+      <h3>Gerak Jatuh Bebas</h3>
+      <p>Selidiki hubungan ketinggian, waktu jatuh, kecepatan, dan percepatan gravitasi.</p>
+      <div class="card-formula">h = ½gt²</div>
+      <span class="open">Mulai eksperimen →</span>
+    </button>
+
+    <button class="experiment-card gva" data-page="gva">
+      <div class="card-icon">↑</div>
+      <div class="card-label">EKSPERIMEN 02</div>
+      <h3>Gerak Vertikal ke Atas</h3>
+      <p>Investigasi pengaruh kecepatan awal terhadap tinggi maksimum dan waktu gerak.</p>
+      <div class="card-formula">y = v₀t − ½gt²</div>
+      <span class="open">Mulai eksperimen →</span>
+    </button>
+
+    <button class="experiment-card parabola" data-page="parabola">
+      <div class="card-icon">↗</div>
+      <div class="card-label">EKSPERIMEN 03</div>
+      <h3>Gerak Parabola</h3>
+      <p>Amati pengaruh kecepatan awal dan sudut elevasi terhadap lintasan proyektil.</p>
+      <div class="card-formula">x=v₀cosθ·t</div>
+      <span class="open">Mulai eksperimen →</span>
+    </button>
+
+    <button class="experiment-card glb" data-page="glb">
+      <div class="card-icon">→</div>
+      <div class="card-label">EKSPERIMEN 04</div>
+      <h3>Gerak Lurus Beraturan</h3>
+      <p>Selidiki hubungan jarak, kecepatan, dan waktu pada gerak dengan kecepatan konstan.</p>
+      <div class="card-formula">s = v · t</div>
+      <span class="open">Mulai eksperimen →</span>
+    </button>
+  </div>
+
+  <div class="home-info">
+    <div><b>01</b><span>Atur variabel</span></div>
+    <div><b>02</b><span>Jalankan simulasi</span></div>
+    <div><b>03</b><span>Analisis data</span></div>
+  </div>
+</section>
+
+<section id="gjb" class="page">
+  <div class="section-head"><button class="back" data-page="home">← Kembali</button><div><span>EKSPERIMEN 01</span><h2>Gerak Jatuh Bebas</h2><p>Benda dilepas dari keadaan diam; hambatan udara diabaikan.</p></div><b>h = h₀ − ½gt²</b></div>
+  <div class="lab-grid">
+    <aside class="panel controls">
+      <h3>Variabel eksperimen</h3>
+      <label>Ketinggian awal h₀ (m)<input id="gjbH" type="number" min=".2" max="100" step=".1" value="5"></label>
+      <label>Percepatan gravitasi g (m/s²)<input id="gjbG" type="number" min=".1" max="20" step=".01" value="9.81"></label>
+      <label>Jumlah percobaan<input id="gjbN" type="number" min="1" max="10" value="5"></label>
+      <label>Mode waktu<select id="gjbMode"><option value="ideal">Ideal</option><option value="measured">Pengukuran simulatif</option></select></label>
+      <div class="actions"><button class="primary" id="gjbStart">▶ Mulai</button><button id="gjbPause">Ⅱ Jeda</button><button id="gjbReset">↻ Reset</button></div>
+      <div class="metrics"><div><small>Waktu</small><b id="gjbT">0.00 s</b></div><div><small>Posisi</small><b id="gjbY">5.00 m</b></div><div><small>Kecepatan</small><b id="gjbV">0.00 m/s</b></div><div><small>Percepatan</small><b id="gjbA">9.81 m/s²</b></div></div>
+      <div class="result"><p>Waktu teori <b id="gjbTT">1.01 s</b></p><p>Kecepatan akhir <b id="gjbVT">9.90 m/s</b></p></div>
+    </aside>
+    <div class="panel visual"><div class="visual-title"><b>Visualisasi real-time</b><span id="gjbInfo">Siap dijatuhkan</span></div><canvas id="gjbCanvas"></canvas></div>
+  </div>
+  <div class="bottom-grid"><div class="panel"><h3>Data percobaan</h3><table id="gjbTable"><thead><tr><th>No</th><th>h₀</th><th>t</th><th>t²</th><th>g hitung</th></tr></thead><tbody></tbody></table><button id="gjbAdd">+ Tambahkan hasil</button></div><div class="panel"><h3>Analisis</h3><div class="analysis"><div><small>Rata-rata g</small><b id="gjbAvg">-</b></div><div><small>Kesalahan relatif</small><b id="gjbErr">-</b></div></div><p id="gjbCon">Belum ada data.</p><button id="gjbGraph">Tampilkan grafik h vs t²</button></div></div>
+  <div class="panel chart"><canvas id="gjbChart"></canvas></div>
+</section>
+
+<section id="gva" class="page">
+  <div class="section-head"><button class="back" data-page="home">← Kembali</button><div><span>EKSPERIMEN 02</span><h2>Gerak Vertikal ke Atas</h2><p>Benda dilempar ke atas dengan kecepatan awal v₀.</p></div><b>y = y₀ + v₀t − ½gt²</b></div>
+  <div class="lab-grid">
+    <aside class="panel controls">
+      <h3>Variabel eksperimen</h3>
+      <label>Kecepatan awal v₀ (m/s)<input id="gvaV0" type="number" min=".1" max="100" step=".1" value="15"></label>
+      <label>Ketinggian awal y₀ (m)<input id="gvaY0" type="number" min="0" max="100" step=".1" value="0"></label>
+      <label>Percepatan gravitasi g (m/s²)<input id="gvaG" type="number" min=".1" max="20" step=".01" value="9.81"></label>
+      <div class="actions"><button class="primary" id="gvaStart">↑ Lempar</button><button id="gvaPause">Ⅱ Jeda</button><button id="gvaReset">↻ Reset</button></div>
+      <div class="metrics"><div><small>Waktu</small><b id="gvaT">0.00 s</b></div><div><small>Posisi</small><b id="gvaY">0.00 m</b></div><div><small>Kecepatan</small><b id="gvaV">15.00 m/s</b></div><div><small>Percepatan</small><b id="gvaA">−9.81 m/s²</b></div></div>
+      <div class="result"><p>Waktu puncak <b id="gvaTP">1.53 s</b></p><p>Tinggi maksimum <b id="gvaYM">11.47 m</b></p><p>Waktu total <b id="gvaTT">3.06 s</b></p></div>
+    </aside>
+    <div class="panel visual"><div class="visual-title"><b>Visualisasi real-time</b><span id="gvaInfo">Siap dilempar</span></div><canvas id="gvaCanvas"></canvas></div>
+  </div>
+  <div class="bottom-grid"><div class="panel"><h3>Variasi v₀</h3><table id="gvaTable"><thead><tr><th>No</th><th>v₀</th><th>t puncak</th><th>y maksimum</th><th>t total</th></tr></thead><tbody></tbody></table><button id="gvaAdd">+ Tambahkan hasil</button></div><div class="panel"><h3>Pertanyaan investigasi</h3><ol><li>Bagaimana v₀ memengaruhi tinggi maksimum?</li><li>Bagaimana v₀ memengaruhi waktu puncak?</li><li>Apakah percepatan berubah saat benda naik dan turun?</li><li>Apa yang terjadi pada kecepatan di titik tertinggi?</li></ol></div></div>
+</section>
+
+<section id="parabola" class="page">
+  <div class="section-head"><button class="back" data-page="home">← Kembali</button><div><span>EKSPERIMEN 03</span><h2>Gerak Parabola</h2><p>Gerak dua dimensi dengan komponen horizontal dan vertikal.</p></div><b>x=v₀cosθ·t</b></div>
+  <div class="lab-grid">
+    <aside class="panel controls">
+      <h3>Variabel eksperimen</h3>
+      <label>Kecepatan awal v₀ (m/s)<input id="parV0" type="number" min=".1" max="100" step=".1" value="20"></label>
+      <label>Sudut elevasi θ (°)<input id="parAngle" type="number" min="1" max="89" value="45"></label>
+      <label>Ketinggian awal y₀ (m)<input id="parY0" type="number" min="0" max="100" step=".1" value="0"></label>
+      <label>Percepatan gravitasi g (m/s²)<input id="parG" type="number" min=".1" max="20" step=".01" value="9.81"></label>
+      <div class="actions"><button class="primary" id="parStart">↗ Luncurkan</button><button id="parPause">Ⅱ Jeda</button><button id="parReset">↻ Reset</button></div>
+      <div class="metrics"><div><small>Waktu</small><b id="parT">0.00 s</b></div><div><small>Posisi x</small><b id="parX">0.00 m</b></div><div><small>Posisi y</small><b id="parY">0.00 m</b></div><div><small>vₓ</small><b id="parVx">14.14 m/s</b></div><div><small>vᵧ</small><b id="parVy">14.14 m/s</b></div><div><small>|v|</small><b id="parSpeed">20.00 m/s</b></div></div>
+      <div class="result"><p>Waktu terbang <b id="parFT">2.88 s</b></p><p>Tinggi maksimum <b id="parYM">10.19 m</b></p><p>Jangkauan <b id="parR">40.77 m</b></p></div>
+    </aside>
+    <div class="panel visual"><div class="visual-title"><b>Visualisasi lintasan real-time</b><span id="parInfo">Siap diluncurkan</span></div><canvas id="parCanvas"></canvas></div>
+  </div>
+  <div class="bottom-grid"><div class="panel"><h3>Variasi sudut</h3><table id="parTable"><thead><tr><th>No</th><th>θ</th><th>v₀</th><th>t terbang</th><th>y maksimum</th><th>R</th></tr></thead><tbody></tbody></table><button id="parAdd">+ Tambahkan hasil</button></div><div class="panel"><h3>Pertanyaan investigasi</h3><ol><li>Bagaimana sudut memengaruhi jangkauan?</li><li>Apakah 45° selalu menghasilkan jangkauan terbesar?</li><li>Bagaimana v₀ memengaruhi tinggi maksimum dan jangkauan?</li><li>Mengapa vₓ tetap pada model ideal?</li></ol></div></div>
+</section>
+<section id="glb" class="page">
+  <div class="section-head"><button class="back" data-page="home">← Kembali</button><div><span>EKSPERIMEN 04</span><h2>Gerak Lurus Beraturan</h2><p>Gerak pada lintasan lurus dengan kecepatan tetap (percepatan nol).</p></div><b>v = s / t</b></div>
+  <div class="glb-frame-wrap"><iframe id="glbFrame" class="glb-frame" data-src="glb/index.html" title="Gerak Lurus Beraturan (PHYSLAB)" loading="lazy"></iframe></div>
+</section>
+</main>
+<footer>Virtual Lab Kinematika • GJB • GVA • Gerak Parabola • GLB</footer>
+<script src="script.js"></script>
+<script src="glb-embed.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHYSLAB — Eksperimen Variabel</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">⚛</div><div><b>PHYSLAB</b><small>VIRTUAL PHYSICS LABORATORY</small></div></div>
+  <div class="header-center">SIMULASI HUBUNGAN <strong>JARAK • KECEPATAN • WAKTU</strong></div>
+  <div class="active"><i></i> SIMULASI AKTIF</div>
+</header>
+
+<main>
+<section class="intro">
+  <div><label>LABORATORIUM VIRTUAL</label><h1>Eksplorasi Hubungan<br>Jarak, Kecepatan, dan Waktu</h1>
+  <p>Setiap eksperimen berdiri sendiri. Hanya variabel bebas yang dapat diubah, sedangkan variabel terikat dihitung otomatis berdasarkan perubahan variabel bebas.</p></div>
+  <div class="basic-formula"><small>PERSAMAAN DASAR</small><strong>v = s / t</strong><span>s = jarak &nbsp;•&nbsp; v = kecepatan &nbsp;•&nbsp; t = waktu</span></div>
+</section>
+
+<section>
+<div class="section-head"><b>01</b><div><h2>Pilih Eksperimen</h2><p>Pilih hubungan variabel yang ingin diselidiki.</p></div></div>
+<div class="choices">
+<button class="choice selected" data-mode="v"><span>EKSPERIMEN 01</span><div class="icons">📏 + ⏱ <b>→ v</b></div><h3>Jarak dan Waktu terhadap Kecepatan</h3><p>Jarak dan waktu = variabel bebas. Kecepatan = variabel terikat.</p></button>
+<button class="choice" data-mode="t"><span>EKSPERIMEN 02</span><div class="icons">📏 + <em>km/h</em> <b>→ t</b></div><h3>Jarak dan Kecepatan terhadap Waktu</h3><p>Jarak dan kecepatan = variabel bebas. Waktu = variabel terikat.</p></button>
+<button class="choice" data-mode="s"><span>EKSPERIMEN 03</span><div class="icons"><em>km/h</em> + ⏱ <b>→ s</b></div><h3>Waktu dan Kecepatan terhadap Jarak</h3><p>Waktu dan kecepatan = variabel bebas. Jarak = variabel terikat.</p></button>
+</div>
+</section>
+
+<section class="lab">
+<div class="left">
+<div class="lab-head"><div class="section-head"><b>02</b><div><h2 id="title">Atur Variabel Bebas</h2><p id="instruction"></p></div></div><button id="reset">↻ Reset</button></div>
+
+<div class="variables">
+<article id="distanceCard" class="instrument">
+  <div class="head"><div><small>VARIABEL BEBAS</small><h3>Jarak</h3></div><em>GESER</em></div>
+  <div class="distance-area">
+    <div class="scale"><span>0 km</span><span>25 km</span><span>50 km</span><span>75 km</span><span>100 km</span></div>
+    <div class="track" id="track"><div class="track-bg"></div><div class="fill" id="fill"></div><div class="handle" id="handle">🚗</div></div>
+    <input id="distance" type="range" min="1" max="100" value="50">
+    <div class="value"><span>Jarak</span><strong><b id="distanceVal">10</b> km</strong></div>
+  </div>
+</article>
+
+<article id="speedCard" class="instrument">
+  <div class="head"><div><small>VARIABEL BEBAS</small><h3>Kecepatan</h3></div><em>PUTAR</em></div>
+  <div class="speed" id="speedometer"><div class="ticks"></div><div class="needle" id="needle"></div><div class="hub"></div><div class="speed-number"><b id="speedVal">60</b><small>km/jam</small></div><div class="arc">0 &nbsp;&nbsp;&nbsp; 60 &nbsp;&nbsp;&nbsp; 120</div></div>
+  <input id="speedRange" type="range" min="1" max="120" value="60">
+  <div class="value"><span>Kecepatan</span><strong><b id="speedDisplay">60</b> km/jam</strong></div>
+</article>
+
+<article id="timeCard" class="instrument">
+  <div class="head"><div><small>VARIABEL BEBAS</small><h3>Waktu</h3></div><em>PUTAR</em></div>
+  <div class="clock" id="clock">
+    <span class="n n12">12</span><span class="n n1">1</span><span class="n n2">2</span><span class="n n3">3</span><span class="n n4">4</span><span class="n n5">5</span><span class="n n6">6</span><span class="n n7">7</span><span class="n n8">8</span><span class="n n9">9</span><span class="n n10">10</span><span class="n n11">11</span>
+    <i class="hour" id="hour"></i><i class="minute" id="minute"></i><i class="center"></i>
+  </div>
+  <input id="time" type="range" min="1" max="43200" value="60">
+  <div class="value"><span>Waktu</span><strong id="timeDisplay">01:00</strong></div>
+</article>
+</div>
+
+<div class="visual">
+<div class="head"><div><small>VISUALISASI</small><h3>Lintasan Gerak</h3></div><span id="status">Output otomatis</span></div>
+<div class="road"><div class="start-line"></div><div class="roadline"></div><div id="car">🚗</div></div>
+<div class="road-label"><span>START</span><strong id="roadDistance">10 km</strong><span>100 km</span></div>
+</div>
+</div>
+
+<aside class="result">
+<div class="result-head"><b>03</b><div><h2>Variabel Terikat</h2><p>Nilai ini tidak diatur langsung oleh siswa.</p></div></div>
+<div class="answer"><small id="answerName">KECEPATAN</small><strong id="answer">60</strong><span id="unit">km/jam</span><p>● Dihitung dari variabel bebas</p></div>
+<div class="data"><h3>Variabel yang digunakan</h3><div><span id="labelA">Jarak (s)</span><strong id="dataA">50 m</strong></div><div><span id="labelB">Waktu (t)</span><strong id="dataB">01:00</strong></div></div>
+<div class="formula"><small id="formulaName">RUMUS KECEPATAN</small><strong id="formula">v = s / t</strong><span id="substitution">v = 0,05 / 1</span><b id="resultFormula">v = 0,05 km/jam</b></div>
+<div class="interpret"><h3>Interpretasi</h3><p id="interpretation"></p></div>
+<div class="legend"><b>Prinsip eksperimen</b><span>Variabel bebas → dapat diubah</span><span>Variabel terikat → dihitung sebagai hasil</span></div>
+</aside>
+</section>
+
+<section class="learning-suite">
+  <div class="suite-title"><div class="section-head"><b>04</b><div><h2>Eksperimen & Analisis</h2><p>Gunakan simulasi untuk membuat prediksi, mengumpulkan data, melihat grafik, dan menarik kesimpulan.</p></div></div></div>
+  <div class="learning-grid">
+    <article class="learning-card prediction-card"><div class="card-title"><span>LANGKAH 1</span><h3>Prediksi</h3></div><p id="predictionPrompt"></p><div class="prediction-options"><label><input type="radio" name="prediction" value="meningkat"> Meningkat</label><label><input type="radio" name="prediction" value="menurun"> Menurun</label><label><input type="radio" name="prediction" value="tetap"> Tetap</label></div><button class="primary-btn" id="checkPrediction">Cek Prediksi</button><div class="feedback" id="predictionFeedback"></div></article>
+    <article class="learning-card objective-card"><div class="card-title"><span>LANGKAH 2</span><h3>Variabel Eksperimen</h3></div><div class="variable-list"><div><i class="blue-dot"></i><span>Variabel bebas</span><strong id="freeVars"></strong></div><div><i class="red-dot"></i><span>Variabel terikat</span><strong id="dependentVar"></strong></div><div><i class="gray-dot"></i><span>Persamaan</span><strong id="objectiveFormula"></strong></div></div><p class="small-note">Variabel terikat tidak diatur langsung. Nilainya diperoleh dari hubungan matematis antarvariabel.</p></article>
+  </div>
+  <article class="simulation-card"><div class="simulation-top"><div><span class="eyebrow">LANGKAH 3</span><h3>Simulasi Real-Time</h3><p>Tekan mulai untuk mengamati gerak kendaraan dan perubahan waktu secara dinamis.</p></div><div class="sim-buttons"><button class="primary-btn" id="startSim">▶ Mulai</button><button class="secondary-btn" id="pauseSim">Ⅱ Jeda</button><button class="secondary-btn" id="resetSim">↻ Reset</button></div></div><div class="sim-dashboard"><div><small>WAKTU SIMULASI</small><strong id="simTime">00:00:00</strong></div><div><small>JARAK SIMULASI</small><strong id="simDistance">0 km</strong></div><div><small>KECEPATAN</small><strong id="simSpeed">0 km/jam</strong></div><div><small>STATUS</small><strong id="simStatus">Siap</strong></div></div><div class="mini-road"><div class="mini-start">START</div><div class="mini-roadline"></div><div class="sim-car" id="simCar">🚗</div><div class="mini-end">TARGET</div></div><div class="progress-wrap"><div id="simProgress"></div></div></article>
+  <div class="analysis-grid"><article class="learning-card data-card"><div class="card-title"><span>LANGKAH 4</span><h3>Pengumpulan Data</h3></div><p>Ubah variabel bebas pada simulasi utama, lalu simpan hasil sebagai data percobaan.</p><div class="table-wrap"><table id="dataTable"><thead><tr><th>No.</th><th>Jarak (km)</th><th>Waktu</th><th>Kecepatan (km/jam)</th></tr></thead><tbody></tbody></table></div><div class="table-actions"><button class="primary-btn" id="addTrial">＋ Simpan Percobaan</button><button class="secondary-btn" id="clearTrials">Hapus Data</button></div></article>
+    <article class="learning-card chart-card"><div class="card-title"><span>LANGKAH 5</span><h3>Grafik Eksperimen</h3></div><div class="chart-controls"><select id="chartType"><option value="st">Jarak–Waktu</option><option value="vt">Kecepatan–Waktu</option><option value="sv">Jarak–Kecepatan</option></select></div><canvas id="chart" width="700" height="330"></canvas><p id="chartCaption" class="chart-caption">Simpan minimal dua percobaan untuk melihat pola data.</p></article></div>
+  <div class="analysis-grid lower"><article class="learning-card challenge-card"><div class="card-title"><span>LANGKAH 6</span><h3>Mode Tantangan</h3></div><div class="challenge-box"><small>TANTANGAN</small><p id="challengeQuestion"></p></div><div class="challenge-input"><input id="challengeAnswer" type="number" step="any" placeholder="Masukkan jawaban"><span id="challengeUnit">km/jam</span><button class="primary-btn" id="checkChallenge">Cek</button></div><div class="feedback" id="challengeFeedback"></div><button class="text-btn" id="newChallenge">↻ Soal Baru</button></article>
+    <article class="learning-card conclusion-card"><div class="card-title"><span>LANGKAH 7</span><h3>Analisis & Kesimpulan</h3></div><label>Apa yang kamu amati?</label><textarea id="analysisText" placeholder="Tuliskan pola hubungan variabel berdasarkan hasil percobaan..."></textarea><label>Kesimpulan</label><textarea id="conclusionText" placeholder="Tuliskan kesimpulan percobaan..."></textarea><button class="primary-btn" id="printResult">🖨 Cetak Hasil Eksperimen</button></article></div>
+</section>
+
+</main>
+<footer><span>PHYSLAB — Virtual Physics Laboratory</span><span>Gerak & Kinematika Dasar</span></footer>
+<script src="script.js"></script>
+<script src="embed-bridge.js"></script>
+</body>
+</html>
