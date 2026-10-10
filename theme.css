@@ -1,0 +1,72 @@
+/* ===== TEMA VISUAL "COSMIC LAB" — hanya mengubah tampilan, bukan logika ===== */
+:root{
+  --bg1:#0a0f2c;--bg2:#1b1458;--bg3:#0b2e4f;
+  --glass:rgba(255,255,255,.07);--glass2:rgba(255,255,255,.12);--line:rgba(255,255,255,.14);
+  --ink:#eef1ff;--ink2:#b9c4ee;--ink3:#8f9dd6;--dark:rgba(6,10,38,.55);
+  --c-gjb:#38bdf8;--c-gva:#a78bfa;--c-par:#34d399;--c-glb:#fb923c;
+}
+html{color-scheme:dark;background:#0a0f2c}
+body{color:var(--ink);background:linear-gradient(155deg,var(--bg1) 0%,var(--bg2) 52%,var(--bg3) 100%);position:relative;min-height:100vh}
+body::before,body::after{content:"";position:fixed;z-index:0;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.55}
+body::before{width:520px;height:520px;left:-140px;top:12%;background:radial-gradient(circle,#6d28d9,transparent 70%);animation:drift1 22s ease-in-out infinite alternate}
+body::after{width:560px;height:560px;right:-160px;bottom:5%;background:radial-gradient(circle,#0891b2,transparent 70%);animation:drift2 26s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(120px,80px)}}
+@keyframes drift2{to{transform:translate(-140px,-60px)}}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
+.topbar,main,footer{position:relative;z-index:1}
+
+.topbar{background:rgba(8,12,40,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand h1{color:#fff}.brand p{color:var(--ink2)}
+.brand-icon{background:linear-gradient(135deg,#38bdf8,#8b5cf6);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,.45)}
+.status{color:var(--ink2)}.status span{box-shadow:0 0 10px #34d399}
+
+.hero h2{color:#fff}
+.hero h2 em{background:linear-gradient(90deg,#22d3ee,#a78bfa 55%,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--ink2)}.eyebrow{color:#67e8f9}
+
+.experiment-card{color:#fff;background:linear-gradient(165deg,rgba(255,255,255,.12),rgba(255,255,255,.03));border:1px solid var(--line);border-top:3px solid var(--acc,#38bdf8);backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.experiment-card:hover{box-shadow:0 22px 50px rgba(0,0,0,.5),0 0 34px -6px var(--acc);border-color:var(--acc)}
+.experiment-card.gjb{--acc:var(--c-gjb)}.experiment-card.gva{--acc:var(--c-gva)}.experiment-card.parabola{--acc:var(--c-par)}.experiment-card.glb{--acc:var(--c-glb)}
+.gjb .card-icon,.gva .card-icon,.parabola .card-icon,.glb .card-icon{color:#fff;box-shadow:0 8px 22px -4px var(--acc)}
+.gjb .card-icon{background:linear-gradient(135deg,#0ea5e9,#6366f1)}
+.gva .card-icon{background:linear-gradient(135deg,#8b5cf6,#ec4899)}
+.parabola .card-icon{background:linear-gradient(135deg,#10b981,#06b6d4)}
+.glb .card-icon{background:linear-gradient(135deg,#f97316,#f43f5e)}
+.card-label{color:var(--ink3)}.experiment-card h3{color:#fff}.experiment-card p{color:var(--ink2)}
+.card-formula{background:rgba(5,8,34,.55);color:#e0e7ff;border:1px solid var(--line)}
+.open{color:var(--acc)}
+.home-info{color:var(--ink2)}.home-info b{color:#67e8f9}
+
+.section-head>div>span{color:#67e8f9}.section-head h2{color:#fff}.section-head p{color:var(--ink2)}
+.section-head>b{background:var(--glass2);border-color:var(--line);color:#e0e7ff}
+.back{background:var(--glass2);border:1px solid var(--line);color:#fff}.back:hover{background:rgba(255,255,255,.2)}
+
+.panel{background:var(--glass);border:1px solid var(--line);color:var(--ink);backdrop-filter:blur(10px);box-shadow:0 12px 34px rgba(0,0,0,.3)}
+#gjb .panel{border-top:3px solid var(--c-gjb)}#gva .panel{border-top:3px solid var(--c-gva)}#parabola .panel{border-top:3px solid var(--c-par)}
+.controls h3,.panel h3{color:#fff}
+.controls label{color:var(--ink2)}
+.controls input,.controls select{background:var(--dark);border:1px solid rgba(255,255,255,.2);color:#fff;outline:none}
+.controls input:focus,.controls select:focus{border-color:#67e8f9;box-shadow:0 0 0 3px rgba(103,232,249,.2)}
+.controls select option{background:#1b1458;color:#fff}
+.actions button,.panel>button{background:var(--glass2);border:1px solid var(--line);color:#fff;transition:.15s}
+.actions button:hover,.panel>button:hover{background:rgba(255,255,255,.22);transform:translateY(-1px)}
+.actions .primary{border:0;color:#fff;background:linear-gradient(135deg,#0ea5e9,#6366f1);box-shadow:0 6px 18px rgba(99,102,241,.45)}
+#gva .actions .primary{background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 6px 18px rgba(236,72,153,.4)}
+#parabola .actions .primary{background:linear-gradient(135deg,#10b981,#06b6d4);box-shadow:0 6px 18px rgba(6,182,212,.4)}
+.metrics div,.analysis div{background:var(--dark);border:1px solid rgba(255,255,255,.08)}
+.metrics small,.analysis small{color:var(--ink3)}.metrics b,.analysis b{color:#67e8f9}
+.result{background:linear-gradient(135deg,rgba(56,189,248,.16),rgba(139,92,246,.16));border:1px solid rgba(147,197,253,.3);color:var(--ink2)}
+.result b{color:#fde68a}
+.visual{background:var(--glass)}.visual-title{color:var(--ink2)}.visual-title b{color:#fff}
+canvas{border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 0 40px rgba(14,30,80,.12)}
+#gjbCanvas{background:linear-gradient(180deg,#7cc8ff 0%,#c9e9ff 45%,#f2faff 100%)}
+#gvaCanvas{background:linear-gradient(180deg,#c7b2ff 0%,#f0c7e8 48%,#fff4fb 100%)}
+#parCanvas{background:linear-gradient(180deg,#8ee3d2 0%,#d3f5e9 48%,#f6fffb 100%)}
+.chart canvas{background:#f7faff}
+.bottom-grid th{background:rgba(255,255,255,.1);color:#cbd5ff}
+.bottom-grid th,.bottom-grid td{border-bottom:1px solid rgba(255,255,255,.1)}
+.bottom-grid td{color:var(--ink)}
+.bottom-grid ol{color:var(--ink2)}
+footer{color:var(--ink3)}
+.glb-frame-wrap{background:transparent;border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.glb-frame{background:transparent}
